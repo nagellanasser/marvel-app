@@ -1,10 +1,11 @@
-package fatec.padroesdeprojeto.io.marvelapp
+package fatec.padroesdeprojeto.io.marvelapp.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
+import fatec.padroesdeprojeto.io.marvelapp.R
 import fatec.padroesdeprojeto.io.marvelapp.databinding.ActivityMainBinding
 
 @AndroidEntryPoint
