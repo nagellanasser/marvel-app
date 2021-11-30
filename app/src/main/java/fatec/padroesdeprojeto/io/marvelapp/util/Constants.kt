@@ -1,6 +1,7 @@
 package fatec.padroesdeprojeto.io.marvelapp.util
 
 object Constants {
+    const val DATABASE_NAME = "marvel.db"
     const val BASE_URL = " https://gateway.marvel.com/v1/public/"
 
     const val PUBLIC_KEY = "8dfc1008d3f8ce950319681d54478806"
