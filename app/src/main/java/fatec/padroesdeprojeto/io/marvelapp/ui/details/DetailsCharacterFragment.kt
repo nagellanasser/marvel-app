@@ -15,10 +15,7 @@ import fatec.padroesdeprojeto.io.marvelapp.databinding.FragmentDetailsCharacterB
 import fatec.padroesdeprojeto.io.marvelapp.ui.adapters.ComicAdapter
 import fatec.padroesdeprojeto.io.marvelapp.ui.base.BaseFragment
 import fatec.padroesdeprojeto.io.marvelapp.ui.state.ResourceState
-import fatec.padroesdeprojeto.io.marvelapp.util.hide
-import fatec.padroesdeprojeto.io.marvelapp.util.limitDescription
-import fatec.padroesdeprojeto.io.marvelapp.util.show
-import fatec.padroesdeprojeto.io.marvelapp.util.toast
+import fatec.padroesdeprojeto.io.marvelapp.util.*
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -45,6 +42,10 @@ class DetailsCharacterFragment :
         onLoadedCharacter(characterModel)
         collectObserver()
         collectObserver()
+        descriptionCharacter()
+    }
+
+    private fun descriptionCharacter() {
         binding.tvDescriptionCharacterDetails.setOnClickListener {
             onShowDialog(characterModel)
         }
@@ -96,9 +97,11 @@ class DetailsCharacterFragment :
         } else {
             tvDescriptionCharacterDetails.text = characterModel.description.limitDescription(100)
         }
-        Glide.with(requireContext())
-            .load(characterModel.thumbnailModel.path + "." + characterModel.thumbnailModel.extension)
-            .into(imgCharacterDetails)
+        loadImage(
+            imgCharacterDetails,
+            characterModel.thumbnailModel.path,
+            characterModel.thumbnailModel.extension
+        )
     }
 
     private fun setupRecyclerView() = with(binding) {

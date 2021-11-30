@@ -14,6 +14,7 @@ import fatec.padroesdeprojeto.io.marvelapp.data.model.comic.ComicModel
 import fatec.padroesdeprojeto.io.marvelapp.databinding.ItemCharacterBinding
 import fatec.padroesdeprojeto.io.marvelapp.databinding.ItemComicBinding
 import fatec.padroesdeprojeto.io.marvelapp.util.limitDescription
+import fatec.padroesdeprojeto.io.marvelapp.util.loadImage
 
 class ComicAdapter : RecyclerView.Adapter<ComicAdapter.ComicViewHolder>() {
 
@@ -53,12 +54,11 @@ class ComicAdapter : RecyclerView.Adapter<ComicAdapter.ComicViewHolder>() {
         holder.binding.apply {
             tvNameComic.text = comic.title
             tvDescriptionComic.text = comic.description
-
-
-            Glide.with(holder.itemView.context)
-                .load(comic.thumbnailModel.path + "." + comic.thumbnailModel.extension)
-                .into(imgComic)
-
+            loadImage(
+                imgComic,
+                comic.thumbnailModel.path,
+                comic.thumbnailModel.extension
+            )
         }
     }
 }

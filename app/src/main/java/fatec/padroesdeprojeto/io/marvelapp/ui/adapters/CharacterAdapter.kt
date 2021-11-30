@@ -12,6 +12,7 @@ import fatec.padroesdeprojeto.io.marvelapp.R
 import fatec.padroesdeprojeto.io.marvelapp.data.model.character.CharacterModel
 import fatec.padroesdeprojeto.io.marvelapp.databinding.ItemCharacterBinding
 import fatec.padroesdeprojeto.io.marvelapp.util.limitDescription
+import fatec.padroesdeprojeto.io.marvelapp.util.loadImage
 
 class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
 
@@ -57,11 +58,11 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
             } else {
                 tvDescriptionCharacter.text = character.description.limitDescription(100)
             }
-
-            Glide.with(holder.itemView.context)
-                .load(character.thumbnailModel.path + "." + character.thumbnailModel.extension)
-                .into(imgCharacter)
-
+            loadImage(
+                imgCharacter,
+                character.thumbnailModel.path,
+                character.thumbnailModel.extension
+            )
         }
 
         holder.itemView.setOnClickListener {
