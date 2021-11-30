@@ -3,6 +3,7 @@ package fatec.padroesdeprojeto.io.marvelapp.ui.details
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import fatec.padroesdeprojeto.io.marvelapp.data.model.character.CharacterModel
 import fatec.padroesdeprojeto.io.marvelapp.data.model.comic.ComicModelResponse
 import fatec.padroesdeprojeto.io.marvelapp.repository.MarvelRepository
 import fatec.padroesdeprojeto.io.marvelapp.ui.state.ResourceState
@@ -47,5 +48,9 @@ class DetailsCharacterViewModel @Inject constructor(
             }
         }
         return ResourceState.Error(response.message())
+    }
+
+    fun insert(characterModel: CharacterModel)= viewModelScope.launch{
+        repository.insert(characterModel)
     }
 }
